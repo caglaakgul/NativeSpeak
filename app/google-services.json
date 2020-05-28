@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "103660496298",
+    "firebase_url": "https://native-speak.firebaseio.com",
+    "project_id": "native-speak",
+    "storage_bucket": "native-speak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103660496298:android:ca0359ddafe63f07c5b7d3",
+        "android_client_info": {
+          "package_name": "nativespeak.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103660496298-h4jjhpjj1gt172pi17kujue53o05nced.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nativespeak.app",
+            "certificate_hash": "730acd8e6329ffcac09cb32d2b9ce74608b86f66"
+          }
+        },
+        {
+          "client_id": "103660496298-mlaf57r74a1fo5b2tgqhvttcgj4s1q31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsK9_xBbqN7zBpcCWbjmXIyqEml9mVKkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103660496298-mlaf57r74a1fo5b2tgqhvttcgj4s1q31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

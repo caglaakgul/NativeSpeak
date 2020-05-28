@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgr">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gd"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text="REGISTER"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/gd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUsername"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/bg_discover_edittext"
+            android:gravity="center"
+            android:hint="username"
+            android:padding="12dp"
+            android:textColorHint="@color/graydf"
+            app:layout_constraintBottom_toTopOf="@+id/tipR_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gd"
+            android:imeOptions="actionNext"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:background="@drawable/bg_discover_edittext"
+            android:id="@+id/tipR_password"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            app:hintEnabled="false"
+            app:passwordToggleTint="@color/graydf"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtUsername"
+            app:passwordToggleEnabled="true">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:paddingStart="52dp"
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="password"
+                android:padding="0dp"
+                android:inputType="textPassword"
+                android:textColor="@color/graydf"
+                android:textColorHint="@color/graydf" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/language"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/bg_discover_edittext"
+            android:gravity="center"
+            android:text="language"
+            android:textColor="@color/white"
+            android:textColorHint="@color/graydf"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tipR_password" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="SIGN UP"
+            android:background="#d50000"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/language"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLogin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:text="Login"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

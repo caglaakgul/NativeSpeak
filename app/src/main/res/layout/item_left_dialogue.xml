@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="message"
+            type="nativespeak.app.data.response.MessageListResponse" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myConsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/left_dialogue_bg"
+            android:padding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/myTextConsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/myTranslateConsLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgMyTextCountry"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/flag"
+                    app:civ_border_color="@color/colorBlackCorner"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintEnd_toStartOf="@+id/myTextTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/myTextTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{message.message_text}"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@id/imgListenMsg"
+                    app:layout_constraintStart_toEndOf="@+id/imgMyTextCountry"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="I am a doctor." />
+
+                <ImageButton
+                    android:id="@+id/imgListenMsg"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintStart_toEndOf="@+id/myTextTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_volume_24dp"
+                    android:background="@drawable/md_transparent"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorBackground"
+                app:layout_constraintBottom_toTopOf="@+id/myTranslateConsLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myTextConsLayout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/myTranslateConsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myTextConsLayout">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgMyTranslateCountry"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/flag2"
+                    app:civ_border_color="@color/colorBlackCorner"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintEnd_toStartOf="@+id/myTranslateTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/myTranslateTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{message.translate_text}"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@id/imgListenTranslateMsg"
+                    app:layout_constraintStart_toEndOf="@+id/imgMyTranslateCountry"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Ben bir doktorum." />
+
+                <ImageButton
+                    android:id="@+id/imgListenTranslateMsg"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintStart_toEndOf="@+id/myTranslateTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_volume_24dp"
+                    android:background="@drawable/md_transparent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
