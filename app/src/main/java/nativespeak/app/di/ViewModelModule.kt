@@ -12,6 +12,7 @@ import nativespeak.app.ui.login.LoginViewModel
 import nativespeak.app.ui.message.MessageViewModel
 import nativespeak.app.ui.register.RegisterViewModel
 import nativespeak.app.ui.settings.SettingsViewModel
+import nativespeak.app.ui.splash.SplashViewModel
 
 
 @Module
@@ -45,4 +46,9 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingsViewModel::class)
     abstract fun bindsSettingsViewModel(viewModel: SettingsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SplashViewModel::class)
+    abstract fun bindsSplashViewModel(viewModel: SplashViewModel): ViewModel
 }

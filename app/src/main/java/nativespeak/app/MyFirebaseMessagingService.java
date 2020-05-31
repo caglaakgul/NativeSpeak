@@ -1,9 +1,18 @@
 package nativespeak.app;
 
 import android.app.ActivityManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -14,6 +23,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 import nativespeak.app.data.response.MessageListResponse;
+import nativespeak.app.ui.splash.SplashActivity;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -36,12 +46,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 String messageSendHour = jObject.getString("messageSendHour");
                 MessageListResponse response = new MessageListResponse("0", messageText, translateMessageText, String.valueOf(messageReceiverID), String.valueOf(messageSenderID));
                 if (isAppIsInBackground(this)) {
-                    //sendNotificationMessage(messageResult, profilePhoto);
+                    sendNotificationMessage(response);
                 } else {
                     Intent intent = new Intent("UpdateChatActivity");
                     intent.putExtra("msg", response);
                     sendBroadcast(intent);
-
                 }
 
             } catch (JSONException e) {
@@ -68,55 +77,46 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         return isInBackground;
     }
 
-    /* private void sendNotificationMessage(MessageResult message, String profilePhoto) {
+    private void sendNotificationMessage(MessageListResponse message) {
 
-         Intent intent = new Intent(this, MessageActivity.class);
-         intent.putExtra("msg", message);
-         intent.putExtra("messageReceiverID", message.getMessageSenderID());
-         intent.putExtra(Keys.KEY_PHOTO_PATH, profilePhoto);
-         intent.putExtra(Keys.KEY_COME_NOT_PAGE, true);
-         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                 PendingIntent.FLAG_ONE_SHOT);
+        Intent intent = new Intent(this, SplashActivity.class);
+        intent.putExtra("messageSenderId", message.getSenderUserId());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
-         String channelId = getString(R.string.default_notification_channel_id);
-         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        String channelId = getString(R.string.default_notification_channel_id);
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
 
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(this, channelId)
+                        .setStyle(new NotificationCompat.BigTextStyle())
+                        .setGroupSummary(true)
+                        .setSmallIcon(R.drawable.ic_toys_black_24dp)
+                        .setContentTitle("Yeni bir mesaj aldınız.")
+                        .setContentText(message.getTranslate_text())
+                        .setGroup(message.getSenderUserId() + "")
+                        .setAutoCancel(true)
+                        .setSound(defaultSoundUri)
+                        .setPriority(Notification.PRIORITY_HIGH)
+                        .setContentIntent(pendingIntent);
 
-         NotificationCompat.Builder notificationBuilder =
-                 new NotificationCompat.Builder(this, channelId)
-                         .setStyle(new NotificationCompat.BigTextStyle())
-                         .setGroupSummary(true)
-                         .setSmallIcon(R.drawable.ic_notify)
-                         .setContentTitle("Yeni bir mesaj aldınız.")
-                         .setContentText(message.getMessageOwnerName()+": " + message.getMessageText())
-                         .setGroup(message.getMessageSenderID()+"")
-                         .setAutoCancel(true)
-                         .setSound(defaultSoundUri)
-                         .setPriority(Notification.PRIORITY_HIGH)
-                         .setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationBuilder.setCategory(Notification.CATEGORY_MESSAGE);
 
-         NotificationManager notificationManager =
-                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-         if(Build.VERSION.SDK_INT> Build.VERSION_CODES.KITKAT)
-         {
-             notificationBuilder.setCategory(Notification.CATEGORY_MESSAGE);
-         }
-
-         // Since android Oreo notification channel is needed.
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-             NotificationChannel channel = new NotificationChannel(channelId,
-                     getString(R.string.default_notification_channel_name),
-                     NotificationManager.IMPORTANCE_DEFAULT);
-             notificationManager.createNotificationChannel(channel);
-         }
+        // Since android Oreo notification channel is needed.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channelId,
+                    getString(R.string.default_notification_channel_name),
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
 
 
-         notificationManager.notify(message.getMessageSenderID(), notificationBuilder.build());
-     }
+        notificationManager.notify(Integer.valueOf(message.getSenderUserId()), notificationBuilder.build());
+    }
 
- */
+
     @Override
     public void onNewToken(String s) {
         Log.e("NEW_TOKEN", s);

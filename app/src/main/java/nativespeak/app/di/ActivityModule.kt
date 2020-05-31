@@ -8,6 +8,7 @@ import nativespeak.app.ui.login.LoginActivity
 import nativespeak.app.ui.message.MessageActivity
 import nativespeak.app.ui.register.RegisterActivity
 import nativespeak.app.ui.settings.SettingsActivity
+import nativespeak.app.ui.splash.SplashActivity
 
 @Module
 abstract class ActivityModule {
@@ -32,4 +33,8 @@ abstract class ActivityModule {
     @PerActivity
     @ContributesAndroidInjector
     abstract fun bindSettingsActivity(): SettingsActivity
+
+    @PerActivity
+    @ContributesAndroidInjector
+    abstract fun bindSplashActivity(): SplashActivity
 }

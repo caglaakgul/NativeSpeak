@@ -1,5 +1,6 @@
 package nativespeak.app.ui.login
 
+import android.app.Activity
 import android.content.Intent
 import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
@@ -57,6 +58,12 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginVi
                 message(text = "Incorrect entry!")
                 positiveButton(text = "OK"){}
             }
+        }
+    }
+
+    companion object{
+        fun start(activity:Activity){
+            activity.startActivity(Intent(activity,LoginActivity::class.java))
         }
     }
 
