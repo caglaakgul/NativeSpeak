@@ -33,12 +33,12 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewAppName"
-            android:textSize="18sp"
+            android:text="Talk Native"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:alpha="0"
-            android:text="Native Speak"
+            android:textSize="16sp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

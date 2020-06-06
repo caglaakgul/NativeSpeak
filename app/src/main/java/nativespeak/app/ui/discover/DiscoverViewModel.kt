@@ -17,7 +17,6 @@ class DiscoverViewModel @Inject constructor(private val apiService: ApiService, 
     val liveData = MutableLiveData<State>()
     var name = MutableLiveData("Guest")
 
-
     fun findUser(username: String) {
         apiService.findUser(username).enqueue(object : Callback<DiscoverResponse> {
             override fun onFailure(call: Call<DiscoverResponse>, t: Throwable) {

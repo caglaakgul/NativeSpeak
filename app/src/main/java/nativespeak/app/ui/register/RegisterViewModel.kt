@@ -24,19 +24,16 @@ class RegisterViewModel @Inject constructor(private val apiService: ApiService) 
                 countryList = response.body() ?: arrayListOf()
                 liveData.value = State.OnCountryListResponse
             }
-
         })
     }
 
     fun register(username: String, password: String, token:String) {
         apiService.register(username, password, selectedCountryId, token).enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {}
-
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 Log.i("TEST_RESPONSE", "response: " + response.body()?.success)
                 liveData.value = State.OnRegisterResponse(username, password)
             }
-
         })
     }
 

@@ -8,6 +8,7 @@ import nativespeak.app.base.view.BaseActivity
 import nativespeak.app.databinding.ActivitySplashBinding
 import android.os.Handler
 import android.util.Log
+import nativespeak.app.ui.discover.DiscoverActivity
 import nativespeak.app.ui.login.LoginActivity
 
 class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>(SplashViewModel::class.java) {
@@ -22,11 +23,14 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>(Spla
             Log.i("testtest",senderId)
         }
 
-
         handler.postDelayed({
-         LoginActivity.start(this)
+            if (prefUtil.isLogin() == true)
+                DiscoverActivity.start(this)
+            else
+                LoginActivity.start(this)
             supportFinishAfterTransition()
         }, 5000)
+
     }
 
 

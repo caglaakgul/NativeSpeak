@@ -42,7 +42,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginVi
     private fun onLogin(username: String, password: String) {
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult ->
             val token = instanceIdResult.token
-            viewModel.login(username, password, token)
+                viewModel.login(username, password, token)
         }
     }
 
