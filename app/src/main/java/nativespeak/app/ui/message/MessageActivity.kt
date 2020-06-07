@@ -35,7 +35,6 @@ class MessageActivity : BaseActivity<MessageViewModel, ActivityMessageBinding>(M
     private val messageReceiver = object : BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
             val message = intent?.getParcelableExtra<MessageListResponse>("msg")
-            // gönderen kişi viewmodeldaki user datasındaki id  il eşit mi değil mi kontrolünü yap
 
             message?.let {
                 adapter.add(message,adapter.itemCount)
